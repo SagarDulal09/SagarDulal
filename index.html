@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagar Dulal | Dynamic Tech Portfolio</title>
+    <!-- Google Fonts: Poppins for modern professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* Base styles */
+        :root {
+            --color-primary: #1a1a2e;
+            /* Deep space navy/black */
+            --color-secondary: #0f4c75;
+            /* Dark blue accent for stats/footer */
+            --color-accent: #e94560;
+            /* Vibrant red/pink for call-to-action */
+            --color-text-light: #f4f4f4;
+            --color-text-dim: #b4b8d8;
+            --header-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-accent);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-text-light);
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--color-text-light);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-accent);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            border: 2px solid var(--color-accent);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--color-accent);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        /* -------------------- Navigation -------------------- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(26, 26, 46, 0.95);
+            /* Semi-transparent background */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links a {
+            padding: 0 15px;
+            font-weight: 600;
+            color: var(--color-text-dim);
+        }
+
+        .nav-links a.active {
+            color: var(--color-accent);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--color-primary);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+                border-top: 1px solid var(--color-secondary);
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                text-align: center;
+                margin: 0.5rem 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px;
+                width: 100%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            /* Responsive Hero Image Size */
+            .hero-image {
+                max-width: 250px;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* -------------------- Hero Section -------------------- */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-height);
+            position: relative;
+            overflow: hidden;
+            /* Subtle background grid pattern for tech look */
+            background-image: linear-gradient(0deg, var(--color-primary) 0%, rgba(26, 26, 46, 0.9) 100%),
+                linear-gradient(rgba(47, 47, 78, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(47, 47, 78, 0.1) 1px, transparent 1px);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            /* Ensures content is vertically centered */
+            justify-content: space-between;
+            gap: 4rem;
+            flex-wrap: wrap-reverse;
+            padding: 2rem 0;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1 1 50%;
+            min-width: 300px;
+        }
+
+        .hero-text h4 {
+            font-size: 1.5rem;
+            color: var(--color-text-dim);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text .dynamic-role {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 600;
+            color: var(--color-accent);
+            min-height: 2.5rem;
+        }
+
+        /* Typing Effect Cursor */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.8em;
+            background-color: var(--color-accent);
+            margin-left: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Hero Image Styles - Updated for Professionalism and 3D Effect */
+        .hero-image-container {
+            flex: 1 1 40%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            perspective: 1000px;
+            /* Enables the 3D space for the child transform */
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            /* Professional rectangular with rounded corners */
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+            border: 3px solid var(--color-accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 60px rgba(233, 69, 96, 0.3);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform-style: preserve-3d;
+            /* Allows child elements to exist in 3D space */
+        }
+
+        /* Add interesting hover effect (Subtle 3D tilt) */
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(5deg) scale(1.02);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7), 0 0 80px var(--color-accent);
+        }
+
+        /* Hero Text Animation */
+        .hero-text h1,
+        .hero-text h4,
+        .hero-text .dynamic-role,
+        .hero-buttons {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInSlide 1s ease forwards;
+        }
+
+        .hero-text h4 {
+            animation-delay: 0.2s;
+        }
+
+        .hero-text h1 {
+            animation-delay: 0.4s;
+        }
+
+        .hero-text .dynamic-role {
+            animation-delay: 0.6s;
+        }
+
+        .hero-buttons {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeInSlide {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero-text {
+                order: 2;
+                flex: 1 1 100%;
+            }
+
+            .hero-image-container {
+                order: 1;
+                margin-bottom: 2rem;
+            }
+        }
+
+
+        /* -------------------- Quick Stats Section - New Circular Design -------------------- */
+        .stats-section {
+            background-color: var(--color-secondary);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        /* Circular Progress Bar Styles */
+        .circular-progress {
+            position: relative;
+            height: 160px;
+            width: 160px;
+            border-radius: 50%;
+            background: conic-gradient(var(--color-accent) 0deg, var(--color-text-dim) 0deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            /* Added transition for smoother hover effect */
+            transition: box-shadow 0.3s ease;
+        }
+
+        .circular-progress:hover {
+            box-shadow: 0 0 30px var(--color-accent);
+            /* More pronounced shadow on hover */
+        }
+
+        .circular-progress::before {
+            content: "";
+            position: absolute;
+            height: 140px;
+            width: 140px;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+        }
+
+        .progress-content {
+            position: relative;
+            z-index: 10;
+            color: var(--color-text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .progress-content i {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: 0.2rem;
+            transition: color 1.5s ease-in-out;
+        }
+
+        .progress-content p {
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .stat-item span {
+            font-size: 1rem;
+            color: var(--color-text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* -------------------- Featured Expertise Section -------------------- */
+        #featured-services {
+            padding: 6rem 0;
+            background-color: var(--color-primary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .service-card {
+            background-color: #242740;
+            /* Slightly lighter primary color */
+            padding: 2rem;
+            border-radius: 12px;
+            border-bottom: 4px solid var(--color-accent);
+            transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background-color: #313554;
+            box-shadow: 0 15px 30px rgba(233, 69, 96, 0.4);
+        }
+
+        .service-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--color-text-dim);
+            font-size: 0.95rem;
+        }
+
+        /* -------------------- Why Hire Me Section -------------------- */
+        #tech-edge {
+            padding: 6rem 0;
+            background-color: #161625;
+            /* Slightly different dark shade */
+        }
+
+        .edge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .edge-card {
+            background-color: #242740;
+            padding: 1.5rem;
+            border-left: 5px solid var(--color-accent);
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .edge-card:hover {
+            background-color: #313554;
+        }
+
+        .edge-card i {
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .edge-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .edge-card p {
+            font-size: 0.9rem;
+            color: var(--color-text-dim);
+        }
+
+        /* -------------------- Footer -------------------- */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(233, 69, 96, 0.1);
+            color: var(--color-text-dim);
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: var(--color-text-dim);
+        }
+
+        .social-links a:hover {
+            color: var(--color-accent);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- -------------------- Navigation -------------------- -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Sagar.D</div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- -------------------- Hero Section (Home) -------------------- -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h4>Hello, I'm Sagar Dulal</h4>
+                    <!-- Updated heading for more impact -->
+                    <h1><span style="color: var(--color-accent);">Code.</span> <span
+                            style="color: var(--color-text-light);">Create.</span> <span
+                            style="color: var(--color-accent);">Instruct.</span></h1>
+                    <p class="dynamic-role">
+                        A Digital Creator and <span id="typing-text"></span><span class="cursor"></span>
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="portfolio.html" class="btn btn-primary">
+                            <i class="fas fa-folder-open"></i> Explore Portfolio
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="fas fa-file-download"></i> Get CV
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image-container">
+                    <!-- IMAGE PATH CORRECTION APPLIED: Using .png extension as requested -->
+                    <img src="assets/Sagar as Instructor.png" alt="Sagar Dulal as Technical Instructor"
+                        class="hero-image"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/1a1a2e/e94560?text=Sagar+Dulal+Image+Error';">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------- Quick Stats Section -------------------- -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <!-- Stat 1: Years of Expertise (90% Progress) -->
+                <div class="stat-item">
+                    <div class="circular-progress" data-progress="90" data-value="1.5+" id="progress-expertise">
+                        <div class="progress-content">
+                            <i class="fas fa-chart-line"></i>
+                            <p id="stats-experience-years">0</p>
+                        </div>
+                    </div>
+                    <span>Years of Expertise</span>
+                </div>
+
+                <!-- Stat 2: Students Instructed (80% Progress) -->
+                <div class="stat-item">
+                    <div class="circular-progress" data-progress="80" data-value="100+" id="progress-students">
+                        <div class="progress-content">
+                            <i class="fas fa-users"></i>
+                            <p id="stats-students">0</p>
+                        </div>
+                    </div>
+                    <span>Students Instructed</span>
+                </div>
+
+                <!-- Stat 3: My Age (100% Progress - age is fixed) -->
+                <div class="stat-item">
+                    <div class="circular-progress" data-progress="100" data-value="AGE" id="progress-age">
+                        <div class="progress-content">
+                            <i class="fas fa-birthday-cake"></i>
+                            <p id="stats-age">--</p>
+                        </div>
+                    </div>
+                    <span>My Age</span>
+                </div>
+
+                <!-- Stat 4: Projects Completed (75% Progress) -->
+                <div class="stat-item">
+                    <div class="circular-progress" data-progress="75" data-value="20+" id="progress-projects">
+                        <div class="progress-content">
+                            <i class="fas fa-briefcase"></i>
+                            <p id="stats-projects">0</p>
+                        </div>
+                    </div>
+                    <span>Projects Completed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------- Featured Expertise Section -------------------- -->
+    <section id="featured-services">
+        <div class="container">
+            <h2 class="section-title">My Core Digital Expertise</h2>
+            <div class="services-grid">
+
+                <div class="service-card" onclick="location.href='skills.html'">
+                    <!-- Icon: Web-dev.png -->
+                    <img src="assets/Web-dev.png" alt="Web Development Icon"
+                        onerror="this.onerror=null; this.src='https://placehold.co/80x80/242740/e94560?text=Web';">
+                    <h3>Modern Web Development</h3>
+                    <p>Building responsive, dynamic, and high-performance websites and applications using the latest
+                        HTML5, CSS3, and JavaScript standards.</p>
+                </div>
+
+                <div class="service-card" onclick="location.href='skills.html'">
+                    <!-- Icon: Graphic-Design.png -->
+                    <img src="assets/Graphic-Design.png" alt="Graphic Design Icon"
+                        onerror="this.onerror=null; this.src='https://placehold.co/80x80/242740/e94560?text=Design';">
+                    <h3>Creative Graphic Design</h3>
+                    <p>Crafting compelling visual identities, digital media, and branding materials using tools like
+                        Adobe Photoshop and Illustrator.</p>
+                </div>
+
+                <div class="service-card" onclick="location.href='skills.html'">
+                    <!-- Icon: Computer-Basic.png -->
+                    <img src="assets/Computer-Basic.png" alt="Tech Instruction Icon"
+                        onerror="this.onerror=null; this.src='https://placehold.co/80x80/242740/e94560?text=Instruct';">
+                    <h3>Technical Instruction & Training</h3>
+                    <p>Experienced instructor specializing in foundational computer skills, including Microsoft Office
+                        Suites and basic troubleshooting at DIT Solution.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------- New Content: Why Hire Me? The Tech Edge -------------------- -->
+    <section id="tech-edge">
+        <div class="container">
+            <h2 class="section-title">My Professional Edge</h2>
+            <div class="edge-grid">
+
+                <div class="edge-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>Mobile-First Adaptability</h4>
+                    <p>Every project is built with a focus on seamless responsiveness, guaranteeing optimal performance
+                        and experience on any screen size.</p>
+                </div>
+
+                <div class="edge-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h4>Pixel-Perfect Design Fidelity</h4>
+                    <p>A designer's eye combined with a developer's precision ensures final products are visually
+                        flawless and true to the original creative vision.</p>
+                </div>
+
+                <div class="edge-card">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Pure JavaScript Dynamics</h4>
+                    <p>Leveraging vanilla JavaScript for light, fast, and high-performing interactive features and
+                        smooth, custom animations.</p>
+                </div>
+
+                <div class="edge-card">
+                    <i class="fas fa-users-cog"></i>
+                    <h4>Clear Technical Communication</h4>
+                    <p>My teaching background translates into clear documentation, effective client communication, and
+                        easy knowledge transfer for maintenance.</p>
+                </div>
+
+                <div class="edge-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h4>Integrated Design & Code</h4>
+                    <p>Bridging the gap between aesthetics and functionality by applying formal graphic design
+                        principles directly to front-end development.</p>
+                </div>
+
+                <div class="edge-card">
+                    <i class="fas fa-brain"></i>
+                    <h4>Analytical Problem Solving</h4>
+                    <p>Applying structured thinking and analytical skills (honed in my computer major) to quickly
+                        diagnose and implement scalable solutions.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------- Footer -------------------- -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <!-- Replace # with your actual social links -->
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; <span id="current-year"></span> Sagar Dulal. All rights reserved.</p>
+            <p>Designed and Coded with passion for the digital world.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Set the base date for age calculation
+        const DOB = new Date('2005-04-09');
+        const roles = ["Web Developer", "Graphic Designer", "Tech Instructor"];
+
+        // Element references
+        const typingTextElement = document.getElementById('typing-text');
+        const ageElement = document.getElementById('stats-age');
+        const currentYearElement = document.getElementById('current-year');
+        const navLinks = document.getElementById('navLinks');
+        const menuToggle = document.getElementById('menuToggle');
+        const progressElements = document.querySelectorAll('.circular-progress');
+
+        // 1. Dynamic Age Calculation Function
+        function calculateAge() {
+            const today = new Date();
+            let age = today.getFullYear() - DOB.getFullYear();
+            const monthDifference = today.getMonth() - DOB.getMonth();
+
+            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < DOB.getDate())) {
+                age--;
+            }
+
+            return age;
+        }
+
+        // 2. Typing Effect Logic (Simple, custom implementation)
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function typeWriter() {
+            const currentRole = roles[roleIndex];
+
+            if (isDeleting) {
+                typingTextElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                typingTextElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                isDeleting = true;
+                typingSpeed = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typingSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typingSpeed);
+        }
+
+        // 3. Circular Progress Bar Animation (Smooth JS Counter/Fill)
+        function animateProgress(element) {
+            const targetPercentage = parseInt(element.getAttribute('data-progress'));
+            const targetValueString = element.getAttribute('data-value');
+            const valueElement = element.querySelector('p');
+            const iconElement = element.querySelector('i');
+
+            let startTimestamp = null;
+            const duration = 1500; // 1.5 seconds animation
+
+            function step(timestamp) {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const elapsed = timestamp - startTimestamp;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // --- 3a. Animate Circle Fill (Conic Gradient) ---
+                // Easing function for smoother start/end of animation
+                const easedProgress = 0.5 - Math.cos(progress * Math.PI) / 2;
+                const currentDegree = easedProgress * (targetPercentage / 100) * 360;
+                element.style.background = `conic-gradient(
+                    var(--color-accent) ${currentDegree}deg, 
+                    var(--color-text-dim) ${currentDegree}deg
+                )`;
+
+                // --- 3b. Animate Value Counter ---
+                if (targetValueString === "AGE") {
+                    const calculatedAge = calculateAge();
+                    const currentValue = Math.floor(easedProgress * calculatedAge);
+                    valueElement.textContent = currentValue;
+
+                    if (progress === 1) {
+                        valueElement.textContent = calculatedAge;
+                        iconElement.style.color = 'var(--color-text-light)';
+                    }
+                } else if (targetValueString.includes('+')) {
+                    const numberPart = parseFloat(targetValueString.replace('+', ''));
+                    // Use a slightly different multiplier for non-age stats to make it visually distinct
+                    const currentValue = Math.floor(easedProgress * numberPart * 1.2);
+                    // Ensures we don't count past the final value if it has a '+'
+                    if (progress < 1) {
+                        valueElement.textContent = currentValue + "+";
+                    } else {
+                        valueElement.textContent = targetValueString;
+                        iconElement.style.color = 'var(--color-text-light)';
+                    }
+                } else {
+                    const currentValue = Math.round(easedProgress * parseFloat(targetValueString));
+                    valueElement.textContent = currentValue;
+                    if (progress === 1) {
+                        valueElement.textContent = targetValueString;
+                        iconElement.style.color = 'var(--color-text-light)';
+                    }
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                }
+            }
+
+            requestAnimationFrame(step);
+        }
+
+        // 4. Initialization and Progress Bar Trigger
+        window.onload = () => {
+            currentYearElement.textContent = new Date().getFullYear();
+
+            // Set initial age for the data-value attribute before animation
+            document.getElementById('progress-age').setAttribute('data-value', calculateAge());
+
+            // Start dynamic functions
+            typeWriter();
+
+            // Animate progress bars
+            // A small delay ensures the elements are rendered before starting the animation
+            setTimeout(() => {
+                progressElements.forEach(animateProgress);
+            }, 500);
+        };
+
+        // 5. Mobile Menu Toggle
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu on link click (for mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Image Fallback/Error Handling (for assets/sagar.png)
+        window.onerror = function (message, source, lineno, colno, error) {
+            // Note: I'm keeping the check for the old .jpg file for robustness in case you haven't renamed them yet.
+            if (message.includes("assets/Sagar as Instructor.jpg") || message.includes("assets/Sagar as Instructor.png")) {
+                console.warn("Could not load Sagar as Instructor.png. Ensure it is in the 'assets' folder with the correct extension.");
+            }
+        };
+
+    </script>
+</body>
+
+</html>

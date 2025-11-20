@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagar Dulal | Projects Portfolio</title>
+    <!-- Google Fonts: Poppins for modern professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* Base styles (Copied from previous files for consistency) */
+        :root {
+            --color-primary: #1a1a2e;
+            /* Deep space navy/black */
+            --color-secondary: #0f4c75;
+            /* Dark blue accent for navigation/footer */
+            --color-accent: #e94560;
+            /* Vibrant red/pink for call-to-action/progress */
+            --color-text-light: #f4f4f4;
+            --color-text-dim: #b4b8d8;
+            --header-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-accent);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-text-light);
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--color-text-light);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-accent);
+            border-radius: 2px;
+        }
+
+        /* -------------------- Navigation -------------------- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #1a1a2e;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links a {
+            padding: 0 15px;
+            font-weight: 600;
+            color: var(--color-text-dim);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a.active {
+            color: var(--color-accent);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--color-text-light);
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--color-primary);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+                border-top: 1px solid var(--color-secondary);
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                text-align: center;
+                margin: 0.5rem 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px;
+                width: 100%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* -------------------- Portfolio Content -------------------- */
+        #portfolio-content {
+            padding-top: calc(var(--header-height) + 5rem);
+            padding-bottom: 6rem;
+            background-color: var(--color-primary);
+            min-height: 100vh;
+        }
+
+        /* --- Project Filter Buttons --- */
+        .filter-controls {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .filter-btn {
+            background-color: transparent;
+            color: var(--color-text-dim);
+            border: 2px solid var(--color-secondary);
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            border-color: var(--color-accent);
+            box-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
+        }
+
+        /* --- Project Grid --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: #242740;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+
+            /* DYNAMIC SCROLL ANIMATION STATES */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+        }
+
+        .project-card.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Project Hide/Show (Dynamic Filtering) */
+        .project-card.hide {
+            display: none;
+            /* Use display none to collapse space fully */
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(233, 69, 96, 0.4);
+        }
+
+        .project-image-wrapper {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            color: var(--color-text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            color: var(--color-text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background-color: var(--color-secondary);
+            color: var(--color-text-light);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* -------------------- Project Modal (Pop-up Details) -------------------- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            padding-top: var(--header-height);
+        }
+
+        .modal-content {
+            background-color: #1a1a2e;
+            margin: 5% auto;
+            padding: 2rem;
+            border: 1px solid var(--color-accent);
+            width: 90%;
+            max-width: 900px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(233, 69, 96, 0.5);
+            animation: modalopen 0.4s ease-out;
+            /* Ensure content inside scrolls if modal is too tall */
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modalopen {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: var(--color-accent);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+        }
+
+        .modal-body p {
+            color: var(--color-text-dim);
+            margin-bottom: 1rem;
+        }
+
+        .modal-body ul {
+            margin-bottom: 1rem;
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .modal-body ul li {
+            position: relative;
+            color: var(--color-text-light);
+            margin-bottom: 5px;
+        }
+
+        .modal-body ul li::before {
+            content: "\f00c";
+            /* Font Awesome checkmark icon */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--color-accent);
+            position: absolute;
+            left: -20px;
+            font-size: 0.9rem;
+        }
+
+        .close-btn {
+            color: var(--color-text-dim);
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: var(--color-accent);
+        }
+
+        /* Modal Links/Buttons */
+        .modal-actions {
+            padding-top: 1rem;
+            border-top: 2px solid var(--color-secondary);
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Highlight the 'Live' link since it's the primary destination */
+        #modal-live-link {
+            border: 2px solid var(--color-accent);
+            /* Highlight Live Link */
+        }
+
+
+        /* -------------------- Footer -------------------- */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(233, 69, 96, 0.1);
+            color: var(--color-text-dim);
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: var(--color-text-dim);
+        }
+
+        .social-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Responsive Modal */
+        @media (max-width: 600px) {
+            .modal-content {
+                width: 95%;
+                margin: 20% auto;
+                padding: 1rem;
+            }
+
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- -------------------- Navigation -------------------- -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Sagar.D</div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- -------------------- Portfolio Content -------------------- -->
+    <section id="portfolio-content">
+        <div class="container">
+            <h2 class="section-title">My Digital Creations: Projects & Designs</h2>
+
+            <!-- Filter Controls -->
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web-dev">Web Development</button>
+                <button class="filter-btn" data-filter="graphic-design">Graphic Design</button>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="project-grid">
+
+                <!-- Project 7: FEATURED - Dynamic Task Manager (Web Dev) -->
+                <div class="project-card" data-category="web-dev" data-id="7">
+                    <div class="project-image-wrapper">
+                        <!-- Image: Project1.png -->
+                        <img src="assets/Project1.png" alt="Featured Web Dev Project" class="project-image"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x200/e94560/1a1a2e?text=Project+1+Error';">
+                    </div>
+                    <div class="project-info">
+                        <h3>Dynamic Task Manager App (JS)</h3>
+                        <p>Robust single-page application demonstrating advanced JS logic, filtering, sorting, and local
+                            storage persistence.</p>
+                        <div class="project-tags">
+                            <span class="tag">Vanilla JS</span>
+                            <span class="tag">UX Design</span>
+                            <span class="tag">Sorting/Filtering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 1: Responsive eCommerce Landing Page (Web Dev) -->
+                <div class="project-card" data-category="web-dev" data-id="1">
+                    <div class="project-image-wrapper">
+                        <!-- Image: Project2.png -->
+                        <img src="assets/Project2.png" alt="Web Dev Project 1" class="project-image"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x200/242740/e94560?text=Project+2+Error';">
+                    </div>
+                    <div class="project-info">
+                        <h3>E-Commerce Landing Page</h3>
+                        <p>Fully responsive front-end design for a modern tech accessory retailer.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">Responsive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: DIT Brochure Redesign (Graphic Design) -->
+                <div class="project-card" data-category="graphic-design" data-id="2">
+                    <div class="project-image-wrapper">
+                        <!-- Image: Project3.png -->
+                        <img src="assets/Project3.png" alt="Graphic Design Project 2" class="project-image"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x200/242740/0f4c75?text=Project+3+Error';">
+                    </div>
+                    <div class="project-info">
+                        <h3>Training Brochure Design</h3>
+                        <p>Branding and layout design for DIT Solution's course catalog.</p>
+                        <div class="project-tags">
+                            <span class="tag">Illustrator</span>
+                            <span class="tag">Branding</span>
+                            <span class="tag">Print Ready</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Vanilla JS Interactive Calculator (Web Dev) -->
+                <div class="project-card" data-category="web-dev" data-id="3">
+                    <div class="project-image-wrapper">
+                        <!-- Image: Project4.png -->
+                        <img src="assets/Project4.png" alt="Web Dev Project 3" class="project-image"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x200/242740/e94560?text=Project+4+Error';">
+                    </div>
+                    <div class="project-info">
+                        <h3>JavaScript Calculator</h3>
+                        <p>Pure JavaScript application demonstrating DOM manipulation and logic control.</p>
+                        <div class="project-tags">
+                            <span class="tag">Vanilla JS</span>
+                            <span class="tag">Logic</span>
+                            <span class="tag">UX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Logo & Visual Identity Kit (Graphic Design) -->
+                <div class="project-card" data-category="graphic-design" data-id="4">
+                    <div class="project-image-wrapper">
+                        <!-- Image: Project5.png -->
+                        <img src="assets/Project5.png" alt="Graphic Design Project 4" class="project-image"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x200/242740/0f4c75?text=Project+5+Error';">
+                    </div>
+                    <div class="project-info">
+                        <h3>Modern Tech Startup Logo</h3>
+                        <p>Creation of a scalable vector logo and associated brand color palette.</p>
+                        <div class="project-tags">
+                            <span class="tag">Illustrator</span>
+                            <span class="tag">Vector</span>
+                            <span class="tag">Branding</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8: Mobile UI Mockup (Graphic Design) -->
+                <div class="project-card" data-category="graphic-design" data-id="8">
+                    <div class="project-image-wrapper">
+                        <!-- Image: Project6.png -->
+                        <img src="assets/Project6.png" alt="Design Project 8" class="project-image"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x200/242740/0f4c75?text=Project+6+Error';">
+                    </div>
+                    <div class="project-info">
+                        <h3>Mobile App UI/UX Mockup</h3>
+                        <p>A high-fidelity wireframe and visual design for a fictional learning application.</p>
+                        <div class="project-tags">
+                            <span class="tag">Figma/XD</span>
+                            <span class="tag">UX Design</span>
+                            <span class="tag">Wireframing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Personal Blog Template (Web Dev) -->
+                <div class="project-card" data-category="web-dev" data-id="5">
+                    <div class="project-image-wrapper">
+                        <!-- Image: Project7.png -->
+                        <img src="assets/Project7.png" alt="Web Dev Project 5" class="project-image"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x200/242740/e94560?text=Project+7+Error';">
+                    </div>
+                    <div class="project-info">
+                        <h3>Minimalist Blog Layout</h3>
+                        <p>A clean, focused template built for fast loading and excellent readability across devices.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS Grid</span>
+                            <span class="tag">Typography</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9: Data Visualization Dashboard (Web Dev) -->
+                <div class="project-card" data-category="web-dev" data-id="9">
+                    <div class="project-image-wrapper">
+                        <!-- Image: Project8.png -->
+                        <img src="assets/Project8.png" alt="Web Dev Project 9" class="project-image"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x200/242740/e94560?text=Project+8+Error';">
+                    </div>
+                    <div class="project-info">
+                        <h3>Simple Data Dashboard</h3>
+                        <p>A front-end mockup demonstrating clean data representation and interactive charts (mock
+                            data).</p>
+                        <div class="project-tags">
+                            <span class="tag">Vanilla JS</span>
+                            <span class="tag">Data Viz</span>
+                            <span class="tag">Responsive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Photo Manipulation Series (Graphic Design) -->
+                <div class="project-card" data-category="graphic-design" data-id="6">
+                    <div class="project-image-wrapper">
+                        <!-- Image: Project9.png -->
+                        <img src="assets/Project9.png" alt="Graphic Design Project 6" class="project-image"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x200/242740/0f4c75?text=Project+9+Error';">
+                    </div>
+                    <div class="project-info">
+                        <h3>Digital Art & Photo Compositing</h3>
+                        <p>A series of high-resolution image composites demonstrating Photoshop mastery.</p>
+                        <div class="project-tags">
+                            <span class="tag">Photoshop</span>
+                            <span class="tag">Retouching</span>
+                            <span class="tag">Digital Art</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------- Project Detail Modal -------------------- -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Project Title</h2>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <img id="modal-image" src="" alt="Project Image"
+                        style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);">
+                </div>
+
+                <p id="modal-category" style="color: var(--color-accent); font-weight: 600; margin-bottom: 0.5rem;"></p>
+
+                <p id="modal-description"></p>
+
+                <div id="modal-objectives-container">
+                    <h4 style="color: var(--color-text-light); margin-bottom: 10px; font-weight: 600;"><i
+                            class="fas fa-check-double"></i> Key Objectives Met:</h4>
+                    <ul id="modal-objectives">
+                        <!-- Objectives populated here -->
+                    </ul>
+                </div>
+
+                <div id="modal-tech-used-container">
+                    <h4 style="color: var(--color-text-light); margin-bottom: 10px; font-weight: 600;"><i
+                            class="fas fa-tools"></i> Technologies Used:</h4>
+                    <div id="modal-tech-used" class="project-tags">
+                        <!-- Tags populated here -->
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <a id="modal-live-link" href="#" target="_blank" class="btn btn-primary"
+                        style="padding: 10px 20px;">
+                        <i class="fas fa-external-link-alt"></i> View Live
+                    </a>
+                    <a id="modal-code-link" href="#" target="_blank" class="btn btn-secondary"
+                        style="padding: 10px 20px;">
+                        <i class="fab fa-github"></i> View Code (Mock)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- -------------------- Footer -------------------- -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <!-- Replace # with your actual social links -->
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; <span id="current-year"></span> Sagar Dulal. All rights reserved.</p>
+            <p>Designed and Coded with passion for the digital world.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 1. Mobile Menu Toggle
+        const navLinks = document.getElementById('navLinks');
+        const menuToggle = document.getElementById('menuToggle');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+
+        // 2. Project Data Storage (MOCK DATA)
+        const projectsData = [
+            {
+                id: 7,
+                title: "Dynamic Task Manager App",
+                category: "web-dev",
+                description: "A robust, highly functional single-page task management application built entirely with vanilla JavaScript. Demonstrates complex data handling, sorting, filtering by priority, and local storage persistence for a professional UX.",
+                tags: ["Vanilla JS", "Local Storage", "Sorting/Filtering", "UX Design"],
+                image: "assets/Project1.png",
+                liveLink: "https://ditgyan.github.io/Project1/", // LIVE URL 1
+                codeLink: "https://github.com/Ditgyan/Project",
+                objectives: ["Implemented priority-based sorting and display.", "Ensured persistent state using browser local storage.", "Designed an intuitive, clean interface based on graphic design principles."]
+            },
+            {
+                id: 1,
+                title: "E-Commerce Landing Page",
+                category: "web-dev",
+                description: "A dynamic and fully responsive landing page designed to showcase a fictional line of consumer electronics. Focused on high-impact visuals and clear calls-to-action.",
+                tags: ["HTML5", "CSS3", "Responsive", "Flexbox"],
+                image: "assets/Project2.png",
+                liveLink: "https://ditgyan.github.io/Project2/", // LIVE URL 2
+                codeLink: "https://github.com/Ditgyan/Project",
+                objectives: ["Implemented mobile-first responsiveness.", "Ensured semantic HTML structure for SEO.", "Created smooth CSS animations on scroll."]
+            },
+            {
+                id: 2,
+                title: "Training Brochure Design",
+                category: "graphic-design",
+                description: "A professional, print-ready tri-fold brochure created for DIT Solution's course marketing. Emphasis was placed on clarity, brand consistency, and hierarchical organization of course content.",
+                tags: ["Illustrator", "InDesign", "Branding", "Print Ready"],
+                image: "assets/Project3.png",
+                liveLink: "https://github.com/Ditgyan/Project", // LIVE URL 3
+                codeLink: "https://github.com/Ditgyan/Project",
+                objectives: ["Developed a consistent visual identity.", "Optimized assets for high-resolution printing.", "Used custom grid layouts for content flow."]
+            },
+            {
+                id: 3,
+                title: "JavaScript Calculator",
+                category: "web-dev",
+                description: "A functional, interactive calculator application built using only vanilla JavaScript. This project focused on mastering DOM manipulation, event handling, and core programming logic.",
+                tags: ["Vanilla JS", "HTML", "CSS", "Logic"],
+                image: "assets/Project4.png",
+                liveLink: "https://ditgyan.github.io/Project4/", // LIVE URL 4
+                codeLink: "https://github.com/Ditgyan/Project",
+                objectives: ["Implemented clear separation of concerns (HTML/CSS/JS).", "Handled complex arithmetic operations.", "Designed for touch-friendly input."]
+            },
+            {
+                id: 4,
+                title: "Modern Tech Startup Logo",
+                category: "graphic-design",
+                description: "Designed a clean, minimalist vector logo and comprehensive style guide for a fictional B2B tech startup. The final output included scalable files for various media.",
+                tags: ["Illustrator", "Vector", "Branding", "Logo Design"],
+                image: "assets/Project5.png",
+                liveLink: "https://github.com/Ditgyan/Project", // LIVE URL 5
+                codeLink: "https://github.com/Ditgyan/Project",
+                objectives: ["Created a universally scalable vector asset.", "Defined CMYK and RGB color specifications.", "Ensured brand mark readability at small sizes."]
+            },
+            {
+                id: 5,
+                title: "Minimalist Blog Template",
+                category: "web-dev",
+                description: "A minimalist blog template focusing on core content and fast performance. Utilized CSS Grid for a clean, two-column layout that adapts smoothly to mobile devices.",
+                tags: ["HTML", "CSS Grid", "Typography", "Performance"],
+                image: "assets/Project7.png",
+                liveLink: "https://github.com/Ditgyan/Project", // LIVE URL 6
+                codeLink: "https://github.com/Ditgyan/Project",
+                objectives: ["Optimized CSS for minimal file size.", "Prioritized high contrast typography for readability.", "Implemented responsive image handling."]
+            },
+            {
+                id: 8,
+                title: "Mobile App UI/UX Mockup",
+                category: "graphic-design",
+                description: "A high-fidelity wireframe and visual design for a fictional learning application. Focused on user flow and modern, accessible design standards.",
+                tags: ["Figma/XD", "UX Design", "Wireframing", "Prototyping"],
+                image: "assets/Project6.png",
+                liveLink: "https://ditgyan.github.io/Project8/", // LIVE URL 7
+                codeLink: "https://github.com/Ditgyan/Project",
+                objectives: ["Established a clear user journey (onboarding to core action).", "Applied minimalist design principles.", "Created reusable component mockups."]
+            },
+            {
+                id: 9,
+                title: "Data Visualization Dashboard",
+                category: "web-dev",
+                description: "A front-end mockup demonstrating clean data representation and interactive charts using basic CSS/JS for a finance application.",
+                tags: ["Vanilla JS", "Data Viz", "Responsive", "UI/UX"],
+                image: "assets/Project8.png",
+                liveLink: "https://github.com/Ditgyan/Project", // LIVE URL 8
+                codeLink: "https://github.com/Ditgyan/Project",
+                objectives: ["Implemented clear visual hierarchy for data.", "Designed custom, lightweight chart components.", "Ensured tablet and desktop scalability."]
+            },
+            {
+                id: 6,
+                title: "Digital Art & Photo Compositing",
+                category: "graphic-design",
+                description: "A series of high-resolution digital composites created using layers, masks, and advanced non-destructive editing techniques in Adobe Photoshop.",
+                tags: ["Photoshop", "Retouching", "Digital Art", "Compositing"],
+                image: "assets/Project9.png",
+                liveLink: "https://github.com/Ditgyan/Project", // LIVE URL 9
+                codeLink: "https://github.com/Ditgyan/Project",
+                objectives: ["Achieved seamless blending of multiple source images.", "Mastered non-destructive adjustment layers.", "Delivered final output in high-resolution PNG format."]
+            }
+        ];
+
+        // 3. Project Filtering Logic
+        const filterBtns = document.querySelectorAll('.filter-controls .filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Update active button state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.getAttribute('data-filter');
+                filterProjects(filter);
+            });
+        });
+
+        function filterProjects(filter) {
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+
+                if (filter === 'all' || category === filter) {
+                    card.classList.remove('hide');
+                } else {
+                    card.classList.add('hide');
+                }
+            });
+        }
+
+        // 4. Project Modal Logic
+        const modal = document.getElementById('project-modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCategory = document.getElementById('modal-category');
+        const modalDescription = document.getElementById('modal-description');
+        const modalObjectives = document.getElementById('modal-objectives');
+        const modalTechUsed = document.getElementById('modal-tech-used');
+        const modalLiveLink = document.getElementById('modal-live-link');
+        const modalCodeLink = document.getElementById('modal-code-link');
+
+        projectCards.forEach(card => {
+            card.addEventListener('click', function () {
+                const projectId = parseInt(this.getAttribute('data-id'));
+                const project = projectsData.find(p => p.id === projectId);
+
+                if (project) {
+                    // Populate Modal Content
+                    modalImage.src = project.image;
+                    modalTitle.textContent = project.title;
+                    modalCategory.textContent = project.category === 'web-dev' ? 'Web Development' : 'Graphic Design';
+                    modalDescription.textContent = project.description;
+
+                    // Populate Objectives
+                    modalObjectives.innerHTML = '';
+                    project.objectives.forEach(obj => {
+                        const li = document.createElement('li');
+                        li.textContent = obj;
+                        modalObjectives.appendChild(li);
+                    });
+
+                    // Populate Tech Used (Tags)
+                    modalTechUsed.innerHTML = '';
+                    project.tags.forEach(tagText => {
+                        const span = document.createElement('span');
+                        span.className = 'tag';
+                        span.textContent = tagText;
+                        modalTechUsed.appendChild(span);
+                    });
+
+                    // Set Links
+                    modalLiveLink.href = project.liveLink;
+                    modalCodeLink.href = project.codeLink;
+
+                    // Show Modal
+                    modal.style.display = 'block';
+                }
+            });
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // --- 5. Dynamic Scroll Animation Logic for Project Cards ---
+        const scrollObserverOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Apply a staggered delay based on the card's position
+                    entry.target.style.transitionDelay = `${index * 0.1}s`;
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, scrollObserverOptions);
+
+        // Observe all project cards on load
+        document.addEventListener('DOMContentLoaded', () => {
+            projectCards.forEach(card => {
+                scrollObserver.observe(card);
+            });
+        });
+
+    </script>
+</body>
+
+</html>

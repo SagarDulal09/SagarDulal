@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagar Dulal | Skills & Proficiency</title>
+    <!-- Google Fonts: Poppins for modern professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* Base styles (Copied from previous files for consistency) */
+        :root {
+            --color-primary: #1a1a2e;
+            /* Deep space navy/black */
+            --color-secondary: #0f4c75;
+            /* Dark blue accent for navigation/footer */
+            --color-accent: #e94560;
+            /* Vibrant red/pink for call-to-action/progress */
+            --color-text-light: #f4f4f4;
+            --color-text-dim: #b4b8d8;
+            --header-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-accent);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-text-light);
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--color-text-light);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-accent);
+            border-radius: 2px;
+        }
+
+        /* -------------------- Navigation -------------------- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            /* Refined shadow and background for professionalism */
+            background-color: #1a1a2e;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links a {
+            padding: 0 15px;
+            font-weight: 600;
+            color: var(--color-text-dim);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a.active {
+            color: var(--color-accent);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--color-text-light);
+            /* Ensure icon is visible */
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--color-primary);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+                border-top: 1px solid var(--color-secondary);
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                text-align: center;
+                margin: 0.5rem 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px;
+                width: 100%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* -------------------- Skills Layout -------------------- */
+        /* FIX APPLIED: Increased top padding to ensure content clears fixed header */
+        #skills-content {
+            padding-top: calc(var(--header-height) + 5rem);
+            /* Increased to 5rem */
+            padding-bottom: 6rem;
+            background-color: #161625;
+            min-height: 100vh;
+        }
+
+        /* --- Skill Filter Buttons --- */
+        .skill-filters {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .filter-btn {
+            background-color: transparent;
+            color: var(--color-text-dim);
+            border: 2px solid var(--color-secondary);
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            border-color: var(--color-accent);
+            box-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
+        }
+
+        /* --- Skill Bars Section --- */
+        .skills-category {
+            display: none;
+            /* Controlled by JavaScript to show/hide categories */
+            padding: 2rem 0;
+            animation: fadeIn 0.5s ease-out;
+            min-height: 400px;
+        }
+
+        .skills-category.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* NEW: Grid wrapper for 2-column layout on desktop */
+        .skill-bar-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            /* Default single column */
+            gap: 2rem 4rem;
+        }
+
+        @media (min-width: 900px) {
+            .skill-bar-grid {
+                grid-template-columns: 1fr 1fr;
+                /* Two columns on desktop */
+            }
+        }
+
+        /* Skill Item Animation (Dynamic) */
+        .skill-item {
+            margin-bottom: 0;
+            /* Managed by grid gap */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .skill-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ensure spacing returns on small screens where grid is 1 column */
+        @media (max-width: 899px) {
+            .skill-item {
+                margin-bottom: 2rem;
+            }
+        }
+
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+            /* Reduced margin */
+            font-weight: 600;
+            color: var(--color-text-light);
+        }
+
+        .skill-detail {
+            font-size: 0.85rem;
+            color: var(--color-text-dim);
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            background-color: #242740;
+            /* Darker background */
+            height: 10px;
+            /* Slightly thinner bar */
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .progress-line {
+            height: 100%;
+            background-color: var(--color-accent);
+            width: 0;
+            /* Initial state for animation */
+            border-radius: 6px;
+            transition: none;
+        }
+
+        /* --- LLM Feature Section --- */
+        #llm-skill-generator {
+            padding: 4rem 0;
+            background-color: #242740;
+            border-radius: 12px;
+            margin: 4rem auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 900px;
+        }
+
+        #llm-skill-generator h3 {
+            color: var(--color-text-light);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .llm-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        #skill-select {
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--color-secondary);
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            font-size: 1rem;
+            appearance: none;
+            /* Remove default styling */
+            cursor: pointer;
+        }
+
+        .llm-output-container {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-top: 2px solid var(--color-accent);
+            background-color: #1a1a2e;
+            min-height: 100px;
+            border-radius: 0 0 12px 12px;
+        }
+
+        #output-content {
+            white-space: pre-wrap;
+            color: var(--color-text-dim);
+            font-family: monospace;
+            line-height: 1.8;
+            min-height: 50px;
+        }
+
+        #output-content h4 {
+            color: var(--color-accent);
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid var(--color-accent);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* --- Tech Logos Grid --- */
+        #tech-logos-section {
+            padding-top: 4rem;
+        }
+
+        .tech-logo-grid {
+            /* Updated grid for 4 columns on desktop */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        @media (min-width: 1024px) {
+            .tech-logo-grid {
+                /* Force 4 columns on larger screens for the 16 items */
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .tech-logo-grid {
+                /* 3 columns on small screens */
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .logo-item {
+            padding: 1rem;
+            background-color: #242740;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logo-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
+        }
+
+        .logo-item img,
+        .logo-item i {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+            display: block;
+            margin: 0 auto 0.5rem;
+        }
+
+        .logo-item i {
+            font-size: 3.5rem;
+            /* Larger FA icons */
+            color: var(--color-accent);
+            line-height: 70px;
+        }
+
+        .logo-item span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--color-text-dim);
+            font-weight: 500;
+        }
+
+        /* --- New Content Section --- */
+        /* FIX: Adjusted padding for better visual separation */
+        #portfolio-preview-cta {
+            padding: 6rem 0 0;
+            background-color: #1a1a2e;
+        }
+
+        #contact-cta-section {
+            padding: 4rem 0 6rem;
+            background-color: #161625;
+        }
+
+        .content-card {
+            background-color: #242740;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .content-card h3 {
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .content-card p {
+            color: var(--color-text-dim);
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* -------------------- Footer -------------------- */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(233, 69, 96, 0.1);
+            color: var(--color-text-dim);
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: var(--color-text-dim);
+        }
+
+        .social-links a:hover {
+            color: var(--color-accent);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- -------------------- Navigation -------------------- -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Sagar.D</div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="skills.html" class="active">Skills</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- -------------------- Skills Content -------------------- -->
+    <section id="skills-content">
+        <div class="container">
+            <h2 class="section-title">My Technical Toolkit & Proficiency</h2>
+
+            <!-- Skill Filters -->
+            <div class="skill-filters">
+                <button class="filter-btn active" data-filter="web-dev">Web Development</button>
+                <button class="filter-btn" data-filter="graphic-design">Graphic Design</button>
+                <button class="filter-btn" data-filter="instruction">Tech Instruction</button>
+            </div>
+
+            <!-- Web Development Skills -->
+            <div id="web-dev" class="skills-category active">
+                <h3 style="color: var(--color-text-light); margin-bottom: 2rem;"><i class="fas fa-laptop-code"></i>
+                    Front-End Engineering</h3>
+
+                <div class="skill-bar-grid">
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>HTML5 & Semantic Markup</span>
+                            <span class="skill-percentage" data-target="95">0%</span>
+                        </div>
+                        <div class="skill-detail">Expertise in structuring clean, accessible, and SEO-friendly web
+                            content.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="95"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>CSS3 & Advanced Styling (Flexbox/Grid)</span>
+                            <span class="skill-percentage" data-target="90">0%</span>
+                        </div>
+                        <div class="skill-detail">Mastery over responsive design, complex layouts, custom animations,
+                            and cross-browser compatibility.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="90"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Vanilla JavaScript & DOM Manipulation</span>
+                            <span class="skill-percentage" data-target="85">0%</span>
+                        </div>
+                        <div class="skill-detail">Building dynamic interfaces, handling user events, and creating
+                            smooth, efficient interactivity without library dependence.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="85"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Front-End Principles (Performance, UX)</span>
+                            <span class="skill-percentage" data-target="88">0%</span>
+                        </div>
+                        <div class="skill-detail">Focus on optimization, load times, accessibility (A11y), and
+                            delivering a polished user experience.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="88"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graphic Design Skills -->
+            <div id="graphic-design" class="skills-category">
+                <h3 style="color: var(--color-text-light); margin-bottom: 2rem;"><i class="fas fa-paint-brush"></i>
+                    Creative Visual Arts</h3>
+
+                <div class="skill-bar-grid">
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Adobe Photoshop (Raster Graphics & Editing)</span>
+                            <span class="skill-percentage" data-target="88">0%</span>
+                        </div>
+                        <div class="skill-detail">Advanced image retouching, manipulation, compositing, and digital
+                            painting for high-quality visual assets.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="88"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Adobe Illustrator (Vector Graphics & Branding)</span>
+                            <span class="skill-percentage" data-target="80">0%</span>
+                        </div>
+                        <div class="skill-detail">Creating scalable logos, custom icons, complex illustrations, and
+                            print-ready vector artwork.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="80"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Design Principles (Color, Layout, Typography)</span>
+                            <span class="skill-percentage" data-target="90">0%</span>
+                        </div>
+                        <div class="skill-detail">Strong theoretical foundation to create visually harmonious,
+                            effective, and communicative designs.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="90"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Instruction Skills -->
+            <div id="instruction" class="skills-category">
+                <h3 style="color: var(--color-text-light); margin-bottom: 2rem;"><i
+                        class="fas fa-chalkboard-teacher"></i> Teaching & Office Proficiency</h3>
+
+                <div class="skill-bar-grid">
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Technical Instruction & Mentoring</span>
+                            <span class="skill-percentage" data-target="95">0%</span>
+                        </div>
+                        <div class="skill-detail">Proven ability to deliver complex technical topics (Web Dev, Graphics)
+                            clearly and engage students effectively.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="95"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>MS Office Suite (Advanced Usage)</span>
+                            <span class="skill-percentage" data-target="98">0%</span>
+                        </div>
+                        <div class="skill-detail">Expert level in utilizing Word for documentation, Excel for data
+                            analysis/reporting, and PowerPoint for professional presentations.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="98"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Foundational Computer Science</span>
+                            <span class="skill-percentage" data-target="85">0%</span>
+                        </div>
+                        <div class="skill-detail">Strong background from +2 Computer Major, enabling structured thinking
+                            and effective troubleshooting of hardware/software basics.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="85"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- -------------------- LLM FEATURE: Skill Path Generator -------------------- -->
+            <section id="llm-skill-generator">
+                <div class="container">
+                    <h3><i class="fas fa-sparkles"></i> Skill Path Generator ✨</h3>
+                    <p style="text-align: center; color: var(--color-text-dim); margin-bottom: 2rem;">
+                        Want to know the next steps for a skill? Let AI generate a learning path or suggest resources
+                        based on my expertise!
+                    </p>
+                    <div class="llm-controls">
+                        <select id="skill-select">
+                            <option value="Web Development">Web Development: Next Steps</option>
+                            <option value="Graphic Design">Graphic Design: Advanced Tools</option>
+                            <option value="Tech Instruction">Tech Instruction: Best Practices</option>
+                            <option value="Front-End Performance">Front-End Performance Optimization</option>
+                        </select>
+                        <button class="btn btn-primary" onclick="generateSkillPath()">
+                            <i class="fas fa-terminal"></i> Generate Path
+                        </button>
+                    </div>
+
+                    <div class="llm-output-container">
+                        <div id="loading-indicator" class="hidden">
+                            <div class="loading-spinner"></div>
+                            <p style="text-align: center; color: var(--color-accent);">Generating path...</p>
+                        </div>
+                        <div id="output-content">
+                            <!-- AI output will appear here -->
+                            Select a skill and click 'Generate Path' to see AI-powered recommendations.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tech Logos Grid -->
+            <section id="tech-logos-section">
+                <h3 class="section-title" style="margin-bottom: 1rem; margin-top: 4rem;">My Toolkit: Software &
+                    Languages</h3>
+                <p style="text-align: center; color: var(--color-text-dim); margin-bottom: 2rem;">A visual
+                    representation of the technologies I master.</p>
+                <div class="tech-logo-grid">
+
+                    <!-- Row 1: Web Fundamentals & Frameworks (4 items) -->
+                    <div class="logo-item">
+                        <img src="assets/8.png" alt="HTML5 Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=8';">
+                        <span>HTML5</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/9.png" alt="CSS Icon"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=9';">
+                        <span>CSS3</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/16.png" alt="JavaScript Hex Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=16';">
+                        <span>Vanilla JS</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/10.png" alt="React Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=10';">
+                        <span>React (Basic)</span>
+                    </div>
+
+                    <!-- Row 2: Back-end & Advanced Dev (4 items) -->
+                    <div class="logo-item">
+                        <img src="assets/12.png" alt="TypeScript Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=12';">
+                        <span>TypeScript</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/11.png" alt="Node JS Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=11';">
+                        <span>Node.js</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/15.png" alt="Python Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=15';">
+                        <span>Python (Basic)</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/14.png" alt="PHP Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=14';">
+                        <span>PHP (Basic)</span>
+                    </div>
+
+                    <!-- Row 3: Infrastructure & CMS (4 items) -->
+                    <div class="logo-item">
+                        <img src="assets/18.png" alt="Docker Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=18';">
+                        <span>Docker</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/19.png" alt="Cloud Circuitry Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=19';">
+                        <span>Cloud Basics</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/17.png" alt="AWS Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=17';">
+                        <span>AWS (Basic)</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/13.png" alt="Wordpress Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=13';">
+                        <span>Wordpress</span>
+                    </div>
+
+                    <!-- Row 4: Graphic Design & Foundations (4 items - FA Icons) -->
+                    <div class="logo-item">
+                        <i class="fas fa-palette"
+                            style="font-size: 3.5rem; color: var(--color-accent); margin-bottom: 0.5rem;"></i>
+                        <span>Photoshop</span>
+                    </div>
+                    <div class="logo-item">
+                        <i class="fas fa-vector-square"
+                            style="font-size: 3.5rem; color: var(--color-accent); margin-bottom: 0.5rem;"></i>
+                        <span>Illustrator</span>
+                    </div>
+                    <div class="logo-item">
+                        <i class="fas fa-file-powerpoint"
+                            style="font-size: 3.5rem; color: var(--color-accent); margin-bottom: 0.5rem;"></i>
+                        <span>MS Office Suite</span>
+                    </div>
+                    <div class="logo-item">
+                        <i class="fas fa-desktop"
+                            style="font-size: 3.5rem; color: var(--color-accent); margin-bottom: 0.5rem;"></i>
+                        <span>OS Knowledge</span>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- -------------------- New Content Section 1: Portfolio Preview -------------------- -->
+            <section id="portfolio-preview-cta" style="background-color: #1a1a2e; padding: 6rem 0 0;">
+                <div class="content-card">
+                    <h3><i class="fas fa-folder-open"></i> See the Skills in Action</h3>
+                    <p>Proficiency levels only tell half the story. See how these languages and tools translate into
+                        actual, tangible results. Explore my portfolio to view recent projects in web development and
+                        graphic design.</p>
+                    <a href="portfolio.html" class="filter-btn active" style="margin-top: 1rem;">View My Projects</a>
+                </div>
+            </section>
+
+            <!-- -------------------- New Content Section 2: Contact CTA -------------------- -->
+            <section id="contact-cta-section" style="background-color: #161625; padding: 4rem 0 6rem;">
+                <div class="content-card">
+                    <h3><i class="fas fa-paper-plane"></i> Ready to Discuss a Project?</h3>
+                    <p>Whether you need an engaging website, high-quality graphics, or professional technical
+                        instruction, I'm ready to help bring your digital vision to life.</p>
+                    <a href="contact.html" class="filter-btn active"
+                        style="background-color: var(--color-accent); color: var(--color-primary); border-color: var(--color-accent); margin-top: 1rem;">Get
+                        In Touch</a>
+                </div>
+            </section>
+
+        </div>
+    </section>
+
+    <!-- -------------------- Footer -------------------- -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <!-- Replace # with your actual social links -->
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; <span id="current-year"></span> Sagar Dulal. All rights reserved.</p>
+            <p>Designed and Coded with passion for the digital world.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 1. Mobile Menu Toggle
+        const navLinks = document.getElementById('navLinks');
+        const menuToggle = document.getElementById('menuToggle');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+
+        // 2. Skill Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const skillCategories = document.querySelectorAll('.skills-category');
+
+        function activateSkills(categoryID) {
+            // Hide all categories
+            skillCategories.forEach(cat => cat.classList.remove('active'));
+            // Show the selected category
+            document.getElementById(categoryID).classList.add('active');
+            // Animate the bars and items in the new active category
+            animateSkillBars(categoryID);
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Update active button state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const categoryID = this.getAttribute('data-filter');
+                activateSkills(categoryID);
+            });
+        });
+
+        // 3. Skill Bar Animation (Horizontal Fill and Percentage Count)
+        const observerOptions = {
+            root: null, // relative to the viewport
+            rootMargin: '0px',
+            threshold: 0.1 // trigger when 10% of the bar is visible
+        };
+
+        // This set ensures we only animate each bar once
+        const animatedBars = new Set();
+
+        const skillObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                const skillLine = entry.target;
+                const skillItem = skillLine.closest('.skill-item');
+
+                if (entry.isIntersecting && !animatedBars.has(skillLine)) {
+                    // 3a. Start the bar fill animation
+                    animateBar(skillLine);
+                    animatedBars.add(skillLine);
+
+                    // 3b. Trigger the parent item's fade-in/slide-up animation
+                    skillItem.classList.add('in-view');
+                }
+            });
+        }, observerOptions);
+
+        // Function to handle the animation of a single bar
+        function animateBar(skillLine) {
+            const targetLevel = skillLine.getAttribute('data-skill-level');
+            const percentageElement = skillLine.closest('.skill-item').querySelector('.skill-percentage');
+
+            // Apply the width change over time using requestAnimationFrame for smooth fill
+            let startLevel = 0;
+            const duration = 1500;
+            let startTime = null;
+
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // Easing function
+                const easedProgress = 0.5 - Math.cos(progress * Math.PI) / 2;
+
+                const currentLevel = Math.floor(easedProgress * targetLevel);
+                skillLine.style.width = `${currentLevel}%`;
+                percentageElement.textContent = `${currentLevel}%`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    // Ensure final value is exact
+                    skillLine.style.width = `${targetLevel}%`;
+                    percentageElement.textContent = `${targetLevel}%`;
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
+        // Initial setup to observe all bars
+        function observeAllSkillBars() {
+            document.querySelectorAll('.progress-line').forEach(line => {
+                skillObserver.unobserve(line); // Stop observing any old ones
+
+                // Reset visual state and animation class
+                line.style.width = '0%';
+                line.closest('.skill-item').classList.remove('in-view');
+                line.removeAttribute('style');
+
+                // We use a slight timeout before observing to ensure CSS has rendered the 0% state
+                setTimeout(() => {
+                    skillObserver.observe(line);
+                }, 50);
+            });
+        }
+
+        // Function to animate bars in the currently active category (used by filter buttons)
+        function animateSkillBars(categoryID) {
+            const activeCategory = document.getElementById(categoryID);
+            if (activeCategory) {
+                activeCategory.querySelectorAll('.progress-line').forEach(line => {
+                    skillObserver.unobserve(line); // Ensure bars reset when swapping categories
+
+                    // Reset visual state and animation class
+                    line.style.width = '0%';
+                    line.closest('.skill-item').classList.remove('in-view');
+                    line.removeAttribute('style');
+
+                    skillObserver.observe(line);
+                });
+            }
+        }
+
+        // 4. Gemini API Logic for Skill Path Generator
+
+        async function callGeminiApi(prompt) {
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+            const systemPrompt = "You are a professional technical instructor and career counselor. Provide clear, actionable next steps or resources for the specified skill path in a concise list format. Limit your response to 4 key bullet points, ensuring the tone is encouraging and expert.";
+
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+                config: {
+                    responseMimeType: "text/plain"
+                }
+            };
+
+            let attempts = 0;
+            const maxAttempts = 3;
+
+            while (attempts < maxAttempts) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API call failed with status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+
+                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Error: Could not retrieve generated text.";
+                    return text.trim();
+
+                } catch (error) {
+                    attempts++;
+                    if (attempts < maxAttempts) {
+                        const delay = Math.pow(2, attempts) * 1000;
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                    } else {
+                        console.error("Gemini API failed after multiple retries:", error);
+                        // FIX: Return a user-friendly, non-technical error message
+                        return "API_FAILURE_FRIENDLY_MESSAGE";
+                    }
+                }
+            }
+        }
+
+        async function generateSkillPath() {
+            const selectElement = document.getElementById('skill-select');
+            const skill = selectElement.value;
+            const outputElement = document.getElementById('output-content');
+            const loadingIndicator = document.getElementById('loading-indicator');
+
+            // Display loading state
+            loadingIndicator.classList.remove('hidden');
+            outputElement.innerHTML = '';
+
+            const userPrompt = `Generate next steps for the skill path: ${skill}.`;
+
+            const aiResponse = await callGeminiApi(userPrompt);
+
+            // Hide loading state
+            loadingIndicator.classList.add('hidden');
+
+            // Handle the specific local failure case
+            if (aiResponse === "API_FAILURE_FRIENDLY_MESSAGE") {
+                outputElement.innerHTML = `
+                    <h4 style="color: var(--color-accent); margin-bottom: 1rem;">Skill Path Generator Unavailable</h4>
+                    <p style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; color: var(--color-text-dim); line-height: 1.6;">
+                        I apologize, the AI Skill Path Generator is currently unavailable. This is usually due to running the site locally. 
+                        Please reach out via the Contact page for a personalized consultation on your next learning steps!
+                    </p>
+                `;
+                return;
+            }
+
+            // Format the output dynamically
+            const title = `<h4>Next Steps for: ${skill}</h4>`;
+
+            // Replace markdown list characters with HTML structure for better display
+            let formattedResponse = aiResponse.replace(/^\*/gm, '•').replace(/^\-/gm, '•');
+
+            // Simple rendering of newlines for pre-wrap, and replacing common markdown list starters
+            outputElement.innerHTML = title + '<p style="font-family: Arial, sans-serif; font-size: 0.95rem; color: var(--color-text-dim);">' + formattedResponse.replace(/\n/g, '<br>') + '</p>';
+        }
+
+        // Add a class to hide the loading indicator initially
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('loading-indicator').classList.add('hidden');
+        });
+
+
+        // Start observing when the page loads
+        window.onload = function () {
+            observeAllSkillBars();
+        };
+
+        // Image Fallback/Error Handling (for assets/8.png to 19.png)
+        window.onerror = function (message, source, lineno, colno, error) {
+            if (message.includes("assets/") && (message.includes(".png") || message.includes(".jpg"))) {
+                console.warn("One or more asset images could not load. Ensure all files (8.png to 19.png) are present.");
+            }
+        };
+
+    </script>
+</body>
+
+</html>
