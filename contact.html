@@ -215,6 +215,16 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             height: fit-content;
+
+            /* DYNAMIC SCROLL ANIMATION STATES */
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .contact-info.in-view {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .contact-info h3 {
@@ -249,8 +259,6 @@
             font-size: 0.9rem;
         }
 
-        /* Dynamic Communication Links - REMOVED STATIC VERSION */
-
         /* --- Contact Form --- */
         .contact-form {
             flex: 2 1 500px;
@@ -258,6 +266,16 @@
             padding: 2.5rem;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+            /* DYNAMIC SCROLL ANIMATION STATES */
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .contact-form.in-view {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .form-group {
@@ -316,6 +334,16 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             border-bottom: 4px solid var(--color-secondary);
             transition: border-color 0.3s ease;
+
+            /* DYNAMIC SCROLL ANIMATION STATES */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .choose-card.in-view {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .choose-card:hover {
@@ -488,21 +516,21 @@
 
             <div class="choose-grid">
 
-                <div class="choose-card">
+                <div class="choose-card" data-delay="0.1">
                     <i class="fas fa-magic"></i>
                     <h4>Design-First Development</h4>
                     <p>I blend professional graphic design knowledge with coding proficiency, ensuring projects are
                         visually stunning and technically flawless from start to finish.</p>
                 </div>
 
-                <div class="choose-card">
+                <div class="choose-card" data-delay="0.3">
                     <i class="fas fa-chalkboard-teacher"></i>
                     <h4>Clear Communication</h4>
                     <p>My background as an instructor guarantees concise and transparent communication, ensuring you
                         always understand the process and the underlying technical decisions.</p>
                 </div>
 
-                <div class="choose-card">
+                <div class="choose-card" data-delay="0.5">
                     <i class="fas fa-mobile-alt"></i>
                     <h4>Guaranteed Responsiveness</h4>
                     <p>Every single line of code is written with mobile-first principles, ensuring optimal UX and
@@ -520,32 +548,24 @@
             <div class="contact-grid">
 
                 <!-- Contact Information Panel -->
-                <div class="contact-info">
+                <div class="contact-info" id="contactInfoPanel">
                     <h3>Contact Details</h3>
                     <p style="color: var(--color-text-dim); margin-bottom: 30px;">
                         I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
                         vision.
                     </p>
 
-                    <!-- Email -->
+                    <!-- Email - FIXED: Made clickable -->
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
                         <div class="text">
                             <h4>Email Me Directly</h4>
-                            <p>sagardulal594@gmail.com</p>
+                            <p><a href="mailto:sagardulal594@gmail.com"
+                                    style="color: var(--color-text-dim);">sagardulal594@gmail.com</a></p>
                         </div>
                     </div>
 
-                    <!-- Phone (Primary) -->
-                    <div class="info-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <div class="text">
-                            <h4>Primary Contact Number</h4>
-                            <p>+977 9818178656</p>
-                            <p style="font-size: 0.75rem; margin-top: 5px;">Use the floating chat button below for
-                                direct messaging.</p>
-                        </div>
-                    </div>
+                    <!-- Phone (Primary) - REMOVED STATIC SECTION, MOVED INFO TO FLOATING BUTTON -->
 
                     <!-- Location Mockup - UPDATED TO MULPANI -->
                     <div class="info-item">
@@ -559,7 +579,7 @@
                 </div>
 
                 <!-- Contact Form -->
-                <div class="contact-form">
+                <div class="contact-form" id="contactFormPanel">
                     <form id="inquiryForm" onsubmit="return validateForm(event)">
                         <h3 style="color: var(--color-text-light); margin-bottom: 2rem;">Send Me an Inquiry</h3>
 
@@ -722,6 +742,40 @@
 
         chatToggle.addEventListener('click', () => {
             chatOptions.classList.toggle('active');
+        });
+
+        // 4. Dynamic Scroll Animation (Why Choose Me, Contact Info, Contact Form)
+        const chooseCards = document.querySelectorAll('.choose-card');
+        const infoPanel = document.getElementById('contactInfoPanel');
+        const formPanel = document.getElementById('contactFormPanel');
+
+        const scrollableElements = [...chooseCards, infoPanel, formPanel];
+
+        const scrollObserverOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, scrollObserverOptions);
+
+        scrollableElements.forEach((item, index) => {
+            if (item.classList.contains('choose-card')) {
+                // Staggered delay for choose cards
+                const delay = parseFloat(item.getAttribute('data-delay') || 0);
+                item.style.transitionDelay = `${delay}s`;
+            } else {
+                // No delay for main panels
+                item.style.transitionDelay = `0s`;
+            }
+            scrollObserver.observe(item);
         });
 
     </script>
