@@ -306,88 +306,6 @@
             transition: none;
         }
 
-        /* --- LLM Feature Section --- */
-        #llm-skill-generator {
-            padding: 4rem 0;
-            background-color: #242740;
-            border-radius: 12px;
-            margin: 4rem auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            max-width: 900px;
-        }
-
-        #llm-skill-generator h3 {
-            color: var(--color-text-light);
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .llm-controls {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        #skill-select {
-            padding: 10px 15px;
-            border-radius: 6px;
-            border: 1px solid var(--color-secondary);
-            background-color: var(--color-primary);
-            color: var(--color-text-light);
-            font-size: 1rem;
-            appearance: none;
-            /* Remove default styling */
-            cursor: pointer;
-        }
-
-        .llm-output-container {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            border-top: 2px solid var(--color-accent);
-            background-color: #1a1a2e;
-            min-height: 100px;
-            border-radius: 0 0 12px 12px;
-        }
-
-        #output-content {
-            white-space: pre-wrap;
-            color: var(--color-text-dim);
-            font-family: monospace;
-            line-height: 1.8;
-            min-height: 50px;
-        }
-
-        #output-content h4 {
-            color: var(--color-accent);
-            font-weight: 700;
-            margin-top: 0;
-            margin-bottom: 1rem;
-        }
-
-        .loading-spinner {
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-top: 4px solid var(--color-accent);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-
         /* --- Tech Logos Grid --- */
         #tech-logos-section {
             padding-top: 4rem;
@@ -428,14 +346,15 @@
             box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
         }
 
-        .logo-item img,
-        .logo-item i {
+        /* Image and Icon styles */
+        .logo-item img {
             width: 70px;
             height: 70px;
             object-fit: contain;
             margin-bottom: 0.5rem;
             display: block;
             margin: 0 auto 0.5rem;
+            filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.2));
         }
 
         .logo-item i {
@@ -443,6 +362,8 @@
             /* Larger FA icons */
             color: var(--color-accent);
             line-height: 70px;
+            display: block;
+            margin: 0 auto 0.5rem;
         }
 
         .logo-item span {
@@ -586,6 +507,33 @@
                         </div>
                     </div>
 
+                    <!-- NEW SKILL 1: Responsive Frameworks -->
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Responsive Frameworks (Bootstrap/Tailwind Mock)</span>
+                            <span class="skill-percentage" data-target="80">0%</span>
+                        </div>
+                        <div class="skill-detail">Experience utilizing CSS frameworks to accelerate responsive design
+                            workflows and ensure component consistency.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="80"></div>
+                        </div>
+                    </div>
+
+                    <!-- NEW SKILL 2: Version Control -->
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Version Control & Collaboration (Git)</span>
+                            <span class="skill-percentage" data-target="75">0%</span>
+                        </div>
+                        <div class="skill-detail">Proficient in basic Git operations (commit, branch, merge) for
+                            collaborative development workflows.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="75"></div>
+                        </div>
+                    </div>
+
+
                     <div class="skill-item">
                         <div class="skill-info">
                             <span>Front-End Principles (Performance, UX)</span>
@@ -619,6 +567,19 @@
                         </div>
                     </div>
 
+                    <!-- NEW SKILL 3: UI/UX Prototyping -->
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>UI/UX Prototyping (Figma/Adobe XD)</span>
+                            <span class="skill-percentage" data-target="78">0%</span>
+                        </div>
+                        <div class="skill-detail">Ability to create interactive, high-fidelity prototypes and
+                            wireframes, focusing on user flow and accessibility.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="78"></div>
+                        </div>
+                    </div>
+
                     <div class="skill-item">
                         <div class="skill-info">
                             <span>Adobe Illustrator (Vector Graphics & Branding)</span>
@@ -628,6 +589,19 @@
                             print-ready vector artwork.</div>
                         <div class="progress-bar">
                             <div class="progress-line" data-skill-level="80"></div>
+                        </div>
+                    </div>
+
+                    <!-- NEW SKILL 4: Video/Motion Graphics -->
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Digital Media Production (Video/Motion)</span>
+                            <span class="skill-percentage" data-target="70">0%</span>
+                        </div>
+                        <div class="skill-detail">Basic proficiency in editing and motion graphics software for creating
+                            engaging social media and portfolio content.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="70"></div>
                         </div>
                     </div>
 
@@ -664,6 +638,20 @@
                         </div>
                     </div>
 
+                    <!-- NEW SKILL 5: Workshop Facilitation -->
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Workshop Facilitation & Public Speaking</span>
+                            <span class="skill-percentage" data-target="92">0%</span>
+                        </div>
+                        <div class="skill-detail">Skilled in leading engaging technical workshops and presenting complex
+                            material to large student groups.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="92"></div>
+                        </div>
+                    </div>
+
+
                     <div class="skill-item">
                         <div class="skill-info">
                             <span>MS Office Suite (Advanced Usage)</span>
@@ -673,6 +661,19 @@
                             analysis/reporting, and PowerPoint for professional presentations.</div>
                         <div class="progress-bar">
                             <div class="progress-line" data-skill-level="98"></div>
+                        </div>
+                    </div>
+
+                    <!-- NEW SKILL 6: Curriculum Development -->
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Curriculum Planning & Content Creation</span>
+                            <span class="skill-percentage" data-target="87">0%</span>
+                        </div>
+                        <div class="skill-detail">Experienced in structuring logical course flow and developing
+                            supplementary training materials and exercises.</div>
+                        <div class="progress-bar">
+                            <div class="progress-line" data-skill-level="87"></div>
                         </div>
                     </div>
 
@@ -690,45 +691,12 @@
                 </div>
             </div>
 
-            <!-- -------------------- LLM FEATURE: Skill Path Generator -------------------- -->
-            <section id="llm-skill-generator">
-                <div class="container">
-                    <h3><i class="fas fa-sparkles"></i> Skill Path Generator ✨</h3>
-                    <p style="text-align: center; color: var(--color-text-dim); margin-bottom: 2rem;">
-                        Want to know the next steps for a skill? Let AI generate a learning path or suggest resources
-                        based on my expertise!
-                    </p>
-                    <div class="llm-controls">
-                        <select id="skill-select">
-                            <option value="Web Development">Web Development: Next Steps</option>
-                            <option value="Graphic Design">Graphic Design: Advanced Tools</option>
-                            <option value="Tech Instruction">Tech Instruction: Best Practices</option>
-                            <option value="Front-End Performance">Front-End Performance Optimization</option>
-                        </select>
-                        <button class="btn btn-primary" onclick="generateSkillPath()">
-                            <i class="fas fa-terminal"></i> Generate Path
-                        </button>
-                    </div>
-
-                    <div class="llm-output-container">
-                        <div id="loading-indicator" class="hidden">
-                            <div class="loading-spinner"></div>
-                            <p style="text-align: center; color: var(--color-accent);">Generating path...</p>
-                        </div>
-                        <div id="output-content">
-                            <!-- AI output will appear here -->
-                            Select a skill and click 'Generate Path' to see AI-powered recommendations.
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Tech Logos Grid -->
+            <!-- -------------------- Tech Logos Grid (Reworked to fill space) -------------------- -->
             <section id="tech-logos-section">
                 <h3 class="section-title" style="margin-bottom: 1rem; margin-top: 4rem;">My Toolkit: Software &
                     Languages</h3>
                 <p style="text-align: center; color: var(--color-text-dim); margin-bottom: 2rem;">A visual
-                    representation of the technologies I master.</p>
+                    representation of the technologies and platforms I master.</p>
                 <div class="tech-logo-grid">
 
                     <!-- Row 1: Web Fundamentals & Frameworks (4 items) -->
@@ -797,20 +765,23 @@
                         <span>Wordpress</span>
                     </div>
 
-                    <!-- Row 4: Graphic Design & Foundations (4 items - FA Icons) -->
+                    <!-- Row 4: Graphic Design & Foundations (4 items - CUSTOM PNGS & FA) -->
                     <div class="logo-item">
-                        <i class="fas fa-palette"
-                            style="font-size: 3.5rem; color: var(--color-accent); margin-bottom: 0.5rem;"></i>
+                        <!-- CUSTOM PNG: Photoshop (Assuming 20.png) -->
+                        <img src="assets/20.png" alt="Photoshop Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=PS';">
                         <span>Photoshop</span>
                     </div>
                     <div class="logo-item">
-                        <i class="fas fa-vector-square"
-                            style="font-size: 3.5rem; color: var(--color-accent); margin-bottom: 0.5rem;"></i>
+                        <!-- CUSTOM PNG: Illustrator (Assuming 21.png) -->
+                        <img src="assets/21.png" alt="Illustrator Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=AI';">
                         <span>Illustrator</span>
                     </div>
                     <div class="logo-item">
-                        <i class="fas fa-file-powerpoint"
-                            style="font-size: 3.5rem; color: var(--color-accent); margin-bottom: 0.5rem;"></i>
+                        <!-- CUSTOM PNG: MS Excel (Assuming excel.png) -->
+                        <img src="assets/office.png" alt="MS Excel Logo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/70x70/242740/e94560?text=XLS';">
                         <span>MS Office Suite</span>
                     </div>
                     <div class="logo-item">
@@ -852,11 +823,14 @@
     <footer>
         <div class="container">
             <div class="social-links">
-                <!-- Replace # with your actual social links -->
-                <a href="https://www.linkedin.com/in/sagardulal09/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <!-- User's Social Links -->
+                <a href="https://www.linkedin.com/in/sagardulal09/" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
                 <a href="https://github.com/SagarDulal09" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://web.facebook.com/sagardulal09" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/itsme_sagar9/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://web.facebook.com/sagardulal09" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/itsme_sagar9/" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
                 <a href="https://x.com/SagarDulal09" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
                 <a href="https://www.tiktok.com/@sagardulal09" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             </div>
@@ -1008,102 +982,6 @@
             }
         }
 
-        // 4. Gemini API Logic for Skill Path Generator
-
-        async function callGeminiApi(prompt) {
-            const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-
-            const systemPrompt = "You are a professional technical instructor and career counselor. Provide clear, actionable next steps or resources for the specified skill path in a concise list format. Limit your response to 4 key bullet points, ensuring the tone is encouraging and expert.";
-
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-                config: {
-                    responseMimeType: "text/plain"
-                }
-            };
-
-            let attempts = 0;
-            const maxAttempts = 3;
-
-            while (attempts < maxAttempts) {
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`API call failed with status: ${response.status}`);
-                    }
-
-                    const result = await response.json();
-
-                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Error: Could not retrieve generated text.";
-                    return text.trim();
-
-                } catch (error) {
-                    attempts++;
-                    if (attempts < maxAttempts) {
-                        const delay = Math.pow(2, attempts) * 1000;
-                        await new Promise(resolve => setTimeout(resolve, delay));
-                    } else {
-                        console.error("Gemini API failed after multiple retries:", error);
-                        // FIX: Return a user-friendly, non-technical error message
-                        return "API_FAILURE_FRIENDLY_MESSAGE";
-                    }
-                }
-            }
-        }
-
-        async function generateSkillPath() {
-            const selectElement = document.getElementById('skill-select');
-            const skill = selectElement.value;
-            const outputElement = document.getElementById('output-content');
-            const loadingIndicator = document.getElementById('loading-indicator');
-
-            // Display loading state
-            loadingIndicator.classList.remove('hidden');
-            outputElement.innerHTML = '';
-
-            const userPrompt = `Generate next steps for the skill path: ${skill}.`;
-
-            const aiResponse = await callGeminiApi(userPrompt);
-
-            // Hide loading state
-            loadingIndicator.classList.add('hidden');
-
-            // Handle the specific local failure case
-            if (aiResponse === "API_FAILURE_FRIENDLY_MESSAGE") {
-                outputElement.innerHTML = `
-                    <h4 style="color: var(--color-accent); margin-bottom: 1rem;">Skill Path Generator Unavailable</h4>
-                    <p style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; color: var(--color-text-dim); line-height: 1.6;">
-                        I apologize, the AI Skill Path Generator is currently unavailable. This is usually due to running the site locally. 
-                        Please reach out via the Contact page for a personalized consultation on your next learning steps!
-                    </p>
-                `;
-                return;
-            }
-
-            // Format the output dynamically
-            const title = `<h4>Next Steps for: ${skill}</h4>`;
-
-            // Replace markdown list characters with HTML structure for better display
-            let formattedResponse = aiResponse.replace(/^\*/gm, '•').replace(/^\-/gm, '•');
-
-            // Simple rendering of newlines for pre-wrap, and replacing common markdown list starters
-            outputElement.innerHTML = title + '<p style="font-family: Arial, sans-serif; font-size: 0.95rem; color: var(--color-text-dim);">' + formattedResponse.replace(/\n/g, '<br>') + '</p>';
-        }
-
-        // Add a class to hide the loading indicator initially
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('loading-indicator').classList.add('hidden');
-        });
-
 
         // Start observing when the page loads
         window.onload = function () {
@@ -1119,6 +997,5 @@
 
     </script>
 </body>
-
 
 </html>

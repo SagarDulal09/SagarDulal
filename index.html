@@ -606,9 +606,8 @@
                     </div>
                 </div>
                 <div class="hero-image-container">
-                    <!-- IMAGE PATH CORRECTION APPLIED: Using .png extension as requested -->
-                    <img src="assets/Sagar as Instructor.png" alt="Sagar Dulal as Technical Instructor"
-                        class="hero-image"
+                    <!-- IMAGE: sagar.png (with guitar) -->
+                    <img src="assets/sagar.png" alt="Sagar Dulal Playing Guitar" class="hero-image"
                         onerror="this.onerror=null; this.src='https://placehold.co/400x400/1a1a2e/e94560?text=Sagar+Dulal+Image+Error';">
                 </div>
             </div>
@@ -759,11 +758,14 @@
     <footer>
         <div class="container">
             <div class="social-links">
-                <!-- Replace # with your actual social links -->
-                <a href="https://www.linkedin.com/in/sagardulal09/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <!-- User's Social Links -->
+                <a href="https://www.linkedin.com/in/sagardulal09/" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
                 <a href="https://github.com/SagarDulal09" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://web.facebook.com/sagardulal09" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/itsme_sagar9/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://web.facebook.com/sagardulal09" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/itsme_sagar9/" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
                 <a href="https://x.com/SagarDulal09" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
                 <a href="https://www.tiktok.com/@sagardulal09" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             </div>
@@ -930,14 +932,12 @@
 
         // Image Fallback/Error Handling (for assets/sagar.png)
         window.onerror = function (message, source, lineno, colno, error) {
-            // Note: I'm keeping the check for the old .jpg file for robustness in case you haven't renamed them yet.
-            if (message.includes("assets/Sagar as Instructor.jpg") || message.includes("assets/Sagar as Instructor.png")) {
-                console.warn("Could not load Sagar as Instructor.png. Ensure it is in the 'assets' folder with the correct extension.");
+            if (message.includes("assets/sagar.png")) {
+                console.warn("Could not load sagar.png. Ensure it is in the 'assets' folder.");
             }
         };
 
     </script>
 </body>
-
 
 </html>

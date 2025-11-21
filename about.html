@@ -270,6 +270,67 @@
             }
         }
 
+        /* -------------------- Image Gallery Section -------------------- */
+        #image-gallery-section {
+            padding: 4rem 0;
+            background-color: #161625;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+
+            /* Dynamic Scroll Animation */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+        }
+
+        .gallery-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            /* Uniform height */
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.8);
+            transition: filter 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            filter: brightness(1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.7);
+            color: var(--color-text-light);
+            padding: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
         /* -------------------- Timeline Section -------------------- */
         #timeline-section {
             padding: 6rem 0;
@@ -740,7 +801,53 @@
         </div>
     </section>
 
-    <!-- -------------------- 2. Experience & Education Timeline -------------------- -->
+    <!-- -------------------- 2. Dynamic Image Gallery Section -------------------- -->
+    <section id="image-gallery-section">
+        <div class="container">
+            <h2 class="section-title">My Journey In Pictures</h2>
+            <div class="gallery-grid">
+
+                <div class="gallery-item" data-delay="0.1">
+                    <img src="assets/Sagar1.png" alt="Sagar - Photographer"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x250/161625/e94560?text=Sagar+1+Error';" />
+                    <div class="image-overlay"><i class="fas fa-camera"></i> Digital Creation</div>
+                </div>
+
+                <div class="gallery-item" data-delay="0.2">
+                    <img src="assets/sagar.png" alt="Sagar - Guitarist"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x250/161625/e94560?text=Sagar+Guitar+Error';" />
+                    <div class="image-overlay"><i class="fas fa-music"></i> Creative Hobbies</div>
+                </div>
+
+                <div class="gallery-item" data-delay="0.3">
+                    <img src="assets/Sagar3.png" alt="Sagar - Formal Portrait"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x250/161625/e94560?text=Sagar+3+Error';" />
+                    <div class="image-overlay"><i class="fas fa-user-tie"></i> Professional Profile</div>
+                </div>
+
+                <div class="gallery-item" data-delay="0.4">
+                    <img src="assets/Sagar as Instructor.png" alt="Sagar - Teaching"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x250/161625/e94560?text=Sagar+Instructor+Error';" />
+                    <div class="image-overlay"><i class="fas fa-chalkboard-teacher"></i> Instructor Role</div>
+                </div>
+
+                <div class="gallery-item" data-delay="0.5">
+                    <img src="assets/Sagar as Instructor 2.png" alt="Sagar - Teaching 2"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x250/161625/e94560?text=Sagar+Instructor+2+Error';" />
+                    <div class="image-overlay"><i class="fas fa-laptop-code"></i> Mentoring & Training</div>
+                </div>
+
+                <div class="gallery-item" data-delay="0.6">
+                    <img src="assets/Sagar2.png" alt="Sagar - Casual"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x250/161625/e94560?text=Sagar+2+Error';" />
+                    <div class="image-overlay"><i class="fas fa-gamepad"></i> Gamer & Enthusiast</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------- 3. Experience & Education Timeline -------------------- -->
     <section id="timeline-section">
         <div class="container">
             <h2 class="section-title">My Journey: Education & Experience</h2>
@@ -803,7 +910,7 @@
         </div>
     </section>
 
-    <!-- -------------------- 3. Team Section (Meet the Instructor - Dynamic Hover) -------------------- -->
+    <!-- -------------------- 4. Team Section (Meet the Instructor - Dynamic Hover) -------------------- -->
     <section id="team-section">
         <div class="container">
             <h2 class="section-title">Meet the Instructor</h2>
@@ -816,22 +923,22 @@
                         onerror="this.onerror=null; this.src='https://placehold.co/300x350/1a1a2e/e94560?text=Sagar+D';">
                     <div class="hover-info">
                         <h4>Sagar Dulal</h4>
-                        <!-- UPDATED ROLE -->
+                        <!-- LOCATION IS GONE -->
                         <p>Instructor at DIT Solution</p>
                         <p>Gamer & Tech Enthusiast</p>
                     </div>
                 </div>
 
             </div>
-            <!-- UPDATED DESCRIPTION -->
+            <!-- UPDATED MOTIVATIONAL DESCRIPTION -->
             <p style="color: var(--color-text-dim); margin-top: 1rem; font-size: 0.9rem;">
-                Discover my professional profile. Hover to initialize dynamic data stream and see the core roles
-                that define my journey.
+                Go beyond the static profile. Hover to unlock my dynamic core competencies and see the drive behind
+                the digital creations.
             </p>
         </div>
     </section>
 
-    <!-- -------------------- 4. Milestones Section (Dynamic Stats) -------------------- -->
+    <!-- -------------------- 5. Milestones Section (Dynamic Stats) -------------------- -->
     <section id="milestone-section">
         <div class="container">
             <h2 class="section-title">My Professional Milestones</h2>
@@ -869,7 +976,7 @@
         </div>
     </section>
 
-    <!-- -------------------- 5. Dynamic FAQ Section (Accordion) -------------------- -->
+    <!-- -------------------- 6. Dynamic FAQ Section (Accordion) -------------------- -->
     <section id="faq-section">
         <div class="container">
             <h2 class="section-title">Frequently Asked Questions</h2>
@@ -932,11 +1039,14 @@
     <footer>
         <div class="container">
             <div class="social-links">
-                <!-- Replace # with your actual social links -->
-                <a href="https://www.linkedin.com/in/sagardulal09/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <!-- User's Social Links -->
+                <a href="https://www.linkedin.com/in/sagardulal09/" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
                 <a href="https://github.com/SagarDulal09" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://web.facebook.com/sagardulal09" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/itsme_sagar9/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://web.facebook.com/sagardulal09" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/itsme_sagar9/" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
                 <a href="https://x.com/SagarDulal09" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
                 <a href="https://www.tiktok.com/@sagardulal09" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             </div>
@@ -989,9 +1099,12 @@
             });
         });
 
-        // 3. Dynamic Timeline Scroll Animation
+        // 3. Dynamic Timeline & Gallery Scroll Animation
         const timelineItems = document.querySelectorAll('.timeline-item');
-        const timelineObserverOptions = {
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const scrollableItems = [...timelineItems, ...galleryItems]; // Combine all items
+
+        const scrollObserverOptions = {
             root: null,
             rootMargin: '0px',
             threshold: 0.2
@@ -1004,10 +1117,11 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, timelineObserverOptions);
+        }, scrollObserverOptions);
 
-        timelineItems.forEach(item => {
-            const delay = parseFloat(item.getAttribute('data-delay') || 0);
+        scrollableItems.forEach((item, index) => {
+            // Apply staggered delay for gallery items (0.1s delay per item)
+            const delay = item.classList.contains('gallery-item') ? index * 0.1 : parseFloat(item.getAttribute('data-delay') || 0);
             item.style.transitionDelay = `${delay}s`;
             timelineObserver.observe(item);
         });
@@ -1079,6 +1193,5 @@
 
     </script>
 </body>
-
 
 </html>

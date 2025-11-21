@@ -249,6 +249,8 @@
             font-size: 0.9rem;
         }
 
+        /* Dynamic Communication Links - REMOVED STATIC VERSION */
+
         /* --- Contact Form --- */
         .contact-form {
             flex: 2 1 500px;
@@ -294,13 +296,54 @@
             min-height: 150px;
         }
 
-        /* --- Map Section --- */
-        #map-section {
-            margin-top: 4rem;
+        /* --- Why Choose Me Section (New) --- */
+        #why-choose-me {
+            background-color: #1a1a2e;
+            padding: 6rem 0 4rem;
+        }
+
+        .choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .choose-card {
             background-color: #242740;
             padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-bottom: 4px solid var(--color-secondary);
+            transition: border-color 0.3s ease;
+        }
+
+        .choose-card:hover {
+            border-color: var(--color-accent);
+        }
+
+        .choose-card i {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .choose-card h4 {
+            font-size: 1.25rem;
+            color: var(--color-text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .choose-card p {
+            font-size: 0.9rem;
+            color: var(--color-text-dim);
+        }
+
+
+        /* --- Map Section --- */
+        #map-section {
+            padding: 4rem 0 6rem;
+            background-color: #161625;
         }
 
         .map-wrapper {
@@ -315,6 +358,81 @@
             width: 100%;
             height: 100%;
             border: none;
+        }
+
+        /* -------------------- Floating Chat Button (New Dynamic Feature) -------------------- */
+        #floating-chat-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1500;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            font-size: 1.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(233, 69, 96, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 0 6px rgba(233, 69, 96, 0.6);
+        }
+
+        .chat-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            pointer-events: none;
+        }
+
+        .chat-options.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .chat-option-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            color: var(--color-text-light);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .chat-option-link:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-option-link.whatsapp {
+            background-color: #25D366;
+        }
+
+        .chat-option-link.viber {
+            background-color: #7360F2;
         }
 
         /* -------------------- Footer -------------------- */
@@ -363,10 +481,41 @@
         </div>
     </header>
 
+    <!-- -------------------- Why Choose Me Section (New) -------------------- -->
+    <section id="why-choose-me">
+        <div class="container">
+            <h2 class="section-title">Why Partner With Me?</h2>
+
+            <div class="choose-grid">
+
+                <div class="choose-card">
+                    <i class="fas fa-magic"></i>
+                    <h4>Design-First Development</h4>
+                    <p>I blend professional graphic design knowledge with coding proficiency, ensuring projects are
+                        visually stunning and technically flawless from start to finish.</p>
+                </div>
+
+                <div class="choose-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h4>Clear Communication</h4>
+                    <p>My background as an instructor guarantees concise and transparent communication, ensuring you
+                        always understand the process and the underlying technical decisions.</p>
+                </div>
+
+                <div class="choose-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>Guaranteed Responsiveness</h4>
+                    <p>Every single line of code is written with mobile-first principles, ensuring optimal UX and
+                        performance across all devices and screen sizes.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- -------------------- Contact Content -------------------- -->
     <section id="contact-content">
         <div class="container">
-            <h2 class="section-title">Get In Touch: Let's Collaborate</h2>
 
             <div class="contact-grid">
 
@@ -382,17 +531,19 @@
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
                         <div class="text">
-                            <h4>Email Me</h4>
+                            <h4>Email Me Directly</h4>
                             <p>sagardulal594@gmail.com</p>
                         </div>
                     </div>
 
-                    <!-- Phone/WhatsApp/Viber -->
+                    <!-- Phone (Primary) -->
                     <div class="info-item">
-                        <i class="fab fa-whatsapp"></i>
+                        <i class="fas fa-phone-alt"></i>
                         <div class="text">
-                            <h4>Phone / WhatsApp / Viber</h4>
+                            <h4>Primary Contact Number</h4>
                             <p>+977 9818178656</p>
+                            <p style="font-size: 0.75rem; margin-top: 5px;">Use the floating chat button below for
+                                direct messaging.</p>
                         </div>
                     </div>
 
@@ -400,7 +551,7 @@
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div class="text">
-                            <h4>My Current Location (Mulpani)</h4>
+                            <h4>My Current Location</h4>
                             <p>Mulpani, Kathmandu, Nepal</p>
                         </div>
                     </div>
@@ -442,30 +593,57 @@
                     </p>
                 </div>
             </div>
-
-            <!-- Map Section - UPDATED TO MULPANI LOCATION -->
-            <section id="map-section">
-                <h3 class="section-title" style="margin-top: 0; margin-bottom: 1.5rem; padding-top: 0;">My Current
-                    Location</h3>
-                <div class="map-wrapper">
-                    <!-- Google Maps Embed for Mulpani, Kathmandu -->
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d14127.318899882946!2d85.3995805!3d27.7212002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjfCsDQzJzE1LjYiTiA4NcKwMjQnMDYuNSJF!5e0!3m2!1sen!2snp!4v1701391969446!5m2!1sen!2snp"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </section>
         </div>
     </section>
+
+    <!-- Map Section - UPDATED TO MULPANI LOCATION -->
+    <section id="map-section">
+        <div class="container">
+            <h3 class="section-title" style="margin-top: 0; margin-bottom: 1.5rem; padding-top: 0;"><i
+                    class="fas fa-map-marked-alt"></i> Find Me On The Map</h3>
+            <div class="map-wrapper">
+                <!-- Google Maps Embed for Mulpani, Kathmandu -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d14127.318899882946!2d85.3995805!3d27.7212002!2m3!1f0!2f0!0!3m2!1i1024!2i768!4f13.1!3m3!1m1!2zMjfCsDQzJzE1LjYiTiA4NcKwMjQnMDYuNSJF!5e0!3m2!1sen!2snp!4v1701391969446!5m2!1sen!2snp"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------- Floating Chat Feature (New) -------------------- -->
+    <div id="floating-chat-container">
+
+        <!-- WhatsApp and Viber Icons -->
+        <div class="chat-options" id="chatOptions">
+            <a href="https://wa.me/9779818178656" target="_blank" class="chat-option-link whatsapp"
+                aria-label="Chat on WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="viber://chat?number=9779818178656" target="_blank" class="chat-option-link viber"
+                aria-label="Chat on Viber">
+                <i class="fab fa-viber"></i>
+            </a>
+        </div>
+
+        <!-- Main Toggle Button -->
+        <div class="chat-button" id="chatToggle">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+
+    </div>
 
     <!-- -------------------- Footer -------------------- -->
     <footer>
         <div class="container">
             <div class="social-links">
-                <!-- Replace # with your actual social links -->
-                <a href="https://www.linkedin.com/in/sagardulal09/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <!-- User's Social Links -->
+                <a href="https://www.linkedin.com/in/sagardulal09/" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
                 <a href="https://github.com/SagarDulal09" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://web.facebook.com/sagardulal09" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/itsme_sagar9/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://web.facebook.com/sagardulal09" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/itsme_sagar9/" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
                 <a href="https://x.com/SagarDulal09" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
                 <a href="https://www.tiktok.com/@sagardulal09" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             </div>
@@ -507,12 +685,11 @@
             const form = document.getElementById('inquiryForm');
             const messageElement = document.getElementById('form-message');
 
-            // Hardcoded hex values for colors to avoid SyntaxError with var()
+            // Hardcoded hex values for colors 
             const accentColor = '#e94560';
             const defaultBorderColor = '#313554';
             const successColor = '#76e945';
 
-            // Simple validation check (fields marked as required in HTML)
             const requiredFields = ['name', 'email', 'message'];
             let isValid = true;
 
@@ -539,8 +716,15 @@
             return false; // Prevent default submission
         }
 
+        // 3. Floating Chat Toggle Logic
+        const chatToggle = document.getElementById('chatToggle');
+        const chatOptions = document.getElementById('chatOptions');
+
+        chatToggle.addEventListener('click', () => {
+            chatOptions.classList.toggle('active');
+        });
+
     </script>
 </body>
-
 
 </html>
